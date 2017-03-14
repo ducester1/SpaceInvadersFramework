@@ -32,17 +32,9 @@ namespace SpaceInvadersFramework
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            //blijft binnen het scherm
             position = Vector2.Clamp(position, Vector2.Zero, new Vector2(SpaceInvaders.Screen.X - Width, SpaceInvaders.Screen.Y));
-            //Console.WriteLine(position);
-            //if (position.X <= 0)
-            //{
-            //    position.X = 0;
-            //    velocity.X = 0;
-            //} else if (position.X >= SpaceInvaders.Screen.X - )
-            //{
-            //    position.X = SpaceInvaders.Screen.X;
-            //    velocity.X = 0;
-            //}
         }
     }
 }
