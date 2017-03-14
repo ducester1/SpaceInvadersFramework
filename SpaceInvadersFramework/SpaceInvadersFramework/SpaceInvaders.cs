@@ -19,6 +19,7 @@ namespace SpaceInvadersFramework
         public SpaceInvaders()
         {
             Content.RootDirectory = "Content";
+            
         }
 
         
@@ -26,12 +27,15 @@ namespace SpaceInvadersFramework
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            gameStateManager.AddGameState("PlayingState", new PlayingState());
+
+            
             screen = new Point(800, 600);
             this.SetFullScreen(false);
-            
+
             // TODO: add gamestate to GameStateManager here
-            
+            gameStateManager.AddGameState("PlayingState", new PlayingState());
+            gameStateManager.SwitchTo("PlayingState");
+
         }
     }
 }
