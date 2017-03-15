@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace SpaceInvadersFramework
 {
@@ -10,6 +11,7 @@ namespace SpaceInvadersFramework
     {
         Player player;
         GameObjectList invaders;
+        GameObjectList bullets;
         public PlayingState()
         {
             player = new Player(this);
@@ -19,6 +21,7 @@ namespace SpaceInvadersFramework
             Add(player);
 
             invaders = new GameObjectList();
+            bullets = new GameObjectList();
 
             Add(invaders);
             for (int i = 0; i < 9; i++)
@@ -34,11 +37,35 @@ namespace SpaceInvadersFramework
                 }
             }
         }
+        public override void HandleInput(InputHelper inputHelper)
+        {
+            base.HandleInput(inputHelper);
+            if (inputHelper.KeyPressed(Keys.Space))
+            {
+                Bullet bullet = new Bullet();
+                bullet.Position = player.Position;
+                this.Add(bullet);
+                bullets.Add(bullet);
+
+            }
+        }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            //foreach(Bullet b in Bullets.Objects) ToArray als je wilt verwijderen of achterstevoren doorheen loopen (i--)
+                //ToArray als je wilt verwijderen of achterstevoren doorheen loopen (i--)
+            foreach (Bullet b in bullets.Objects)
+            {
+                foreach (Invader i in invaders.Objects)
+                {
+                    if (b.CollidesWith(i) && b.Visible && i.Visible)
+                    {
+                        i.Visible = false;
+                        b.Visible = false;
+                    }
+                }
+                
+            }
         }
     }
 }

@@ -28,8 +28,6 @@ namespace SpaceInvadersFramework
             {
                 velocity.X = 500;
             }
-
-            //inputhelper space
         }
 
         public override void Update(GameTime gameTime)
