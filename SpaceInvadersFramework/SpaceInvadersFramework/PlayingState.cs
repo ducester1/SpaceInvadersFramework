@@ -12,7 +12,7 @@ namespace SpaceInvadersFramework
         GameObjectList invaders;
         public PlayingState()
         {
-            player = new Player();
+            player = new Player(this);
             var xPos = SpaceInvaders.Screen.X / 2 - player.Width / 2;
             var yPos = SpaceInvaders.Screen.Y - player.Width;
             player.Position = new Vector2(xPos, yPos);
@@ -28,13 +28,17 @@ namespace SpaceInvadersFramework
                     var asset = "blue_invader";
                     if (j == 1) asset = "yellow_invader";
                     if (j == 2) asset = "red_invader";
-                    invaders.Add(new Invader(asset));
-                    {
-                        position = new Vector2(i * 50, j * 50);
-                    }
+                    var invader = new Invader(asset);
+                    invaders.Add(invader);
+                    invader.Position = new Vector2(i * 50, j * 50);
                 }
             }
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+            //foreach(Bullet b in Bullets.Objects) ToArray als je wilt verwijderen of achterstevoren doorheen loopen (i--)
+        }
     }
 }

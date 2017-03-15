@@ -9,7 +9,8 @@ namespace SpaceInvadersFramework
 {
     class Player : SpriteGameObject
     {
-        public Player()
+        private PlayingState playingState;
+        public Player(PlayingState playingState)
             :base("ship")
         {
         }
@@ -22,11 +23,13 @@ namespace SpaceInvadersFramework
             {
                 velocity.X = -500;
             }
+
             else if (inputHelper.IsKeyDown(Keys.Right))
             {
                 velocity.X = 500;
             }
 
+            //inputhelper space
         }
 
         public override void Update(GameTime gameTime)
