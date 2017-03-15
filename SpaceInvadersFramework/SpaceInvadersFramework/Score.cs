@@ -16,7 +16,7 @@ namespace SpaceInvadersFramework
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            Position = new Vector2(0,0);
+            Position = new Vector2.(0,0);
             Text = "score: " + score;
         }
     }

@@ -17,7 +17,7 @@ namespace SpaceInvadersFramework
         {
             player = new Player(this);
             var xPos = SpaceInvaders.Screen.X / 2 - player.Width / 2;
-            var yPos = SpaceInvaders.Screen.Y - player.Width;
+            var yPos = SpaceInvaders.Screen.Y - player.Height;
             player.Position = new Vector2(xPos, yPos);
             Add(player);
 
